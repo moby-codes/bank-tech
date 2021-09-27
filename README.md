@@ -1,4 +1,4 @@
-# bank-tech
+# Bank tech Test
 
 ## Specification
 
