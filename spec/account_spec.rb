@@ -14,4 +14,11 @@ describe 'account' do
     expect(account.balance).to eq(500)
   end
 
+  it 'allows you to withdraw money from the account balance' do
+    account = Account.new
+    account.credit(500)
+    account.debit(450)
+    expect(account.balance).to eq(50)
+  end
+
 end

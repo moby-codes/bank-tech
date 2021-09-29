@@ -7,8 +7,11 @@ class Account
   end
 
   def credit(deposit)
-    @balance = @balance + deposit
-    puts @balance
+    @balance += deposit
+  end
+
+  def debit(withdrawal)
+    @balance -= withdrawal
   end
 
 end
