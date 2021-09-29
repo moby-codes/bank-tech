@@ -6,4 +6,9 @@ class Account
     @balance = 0
   end
 
+  def credit(deposit)
+    @balance = @balance + deposit
+    puts @balance
+  end
+
 end
