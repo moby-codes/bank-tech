@@ -17,4 +17,11 @@ describe 'account' do
     account.debit(450)
     expect(account.balance).to eq(50)
   end
+
+  it 'does not allow you to withdraw if you have insufficient funds' do
+    account.credit(500)
+    # account.debit(550)
+    expect {account.debit(550)}.to raise_error(RuntimeError) 
+  end
+
 end

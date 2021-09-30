@@ -17,10 +17,14 @@ class Account
   end
 
   def debit(withdrawal)
-    debit_transaction = []
-    @balance -= withdrawal
-    debit_transaction.push(Date.today.to_s, withdrawal, "withdrawal", @balance)
-    @print_statement.push(debit_transaction) 
+    if @balance < withdrawal
+      raise RuntimeError,  "You do not have enough funds to complete this transaction!" 
+    else
+      debit_transaction = []
+      @balance -= withdrawal
+      debit_transaction.push(Date.today.to_s, withdrawal, "withdrawal", @balance)
+      @print_statement.push(debit_transaction) 
+    end  
   end
 
 end
