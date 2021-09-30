@@ -3,7 +3,7 @@ require 'account'
 describe 'account' do
   let(:account) { Account.new }
   
-  it 'creates a new account' do
+  it 'creates a new account with zero balance' do
     expect(account.balance).to eq(0)
   end
 
@@ -16,6 +16,11 @@ describe 'account' do
     account.credit(500)
     account.debit(450)
     expect(account.balance).to eq(50)
+  end
+
+  it 'prints a statement' do
+    account.credit(500)
+    expect(account.statement).to eq("2021")
   end
 
 end
