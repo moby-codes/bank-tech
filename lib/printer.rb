@@ -21,7 +21,7 @@ class Printer
   end
 
   def print_header
-    puts "Date ||" + " Amount || " + " Credit/Debit || " + " Balance "
+    print " Date ||" + " Amount || " + " Credit/Debit || " + " Balance \n"
   end
 
 end
