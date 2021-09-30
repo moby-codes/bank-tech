@@ -1,7 +1,9 @@
 require 'account'
+require 'date'
 
 describe 'account' do
   let(:account) { Account.new }
+
   
   it 'creates a new account with zero balance' do
     expect(account.balance).to eq(0)
@@ -19,7 +21,7 @@ describe 'account' do
   end
 
   it 'does not allow you to withdraw if you have insufficient funds' do
-    expect {account.debit(5)}.to raise_error(RuntimeError) 
+    expect { account.debit(5) }.to raise_error(RuntimeError) 
   end
 
 end

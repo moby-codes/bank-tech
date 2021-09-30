@@ -1,3 +1,4 @@
+require_relative 'printer'
 require 'date'
 
 class Account
@@ -6,25 +7,26 @@ class Account
 
   def initialize
     @balance = 0
-    @print_statement = []
+    @prints = Printer.new
   end
 
   def credit(deposit)
     credit_transaction = []
     @balance += deposit
     credit_transaction.push(Date.today.to_s, deposit, "deposit", @balance)
-    @print_statement.push(credit_transaction)
+    @prints.history(credit_transaction)
   end
 
   def debit(withdrawal)
-    if @balance < withdrawal
-      raise RuntimeError,  "You do not have enough funds to complete this transaction!" 
-    else
-      debit_transaction = []
-      @balance -= withdrawal
-      debit_transaction.push(Date.today.to_s, withdrawal, "withdrawal", @balance)
-      @print_statement.push(debit_transaction) 
-    end  
+    raise RuntimeError, "You do not have enough funds to complete this transaction!" if @balance < withdrawal
+    debit_transaction = []
+    @balance -= withdrawal
+    debit_transaction.push(Date.today.to_s, withdrawal, "withdrawal", @balance)
+    @prints.history(debit_transaction)   
+  end
+
+  def summary
+    @prints.statement
   end
 
 end
