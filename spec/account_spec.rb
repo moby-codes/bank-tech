@@ -17,10 +17,4 @@ describe 'account' do
     account.debit(450)
     expect(account.balance).to eq(50)
   end
-
-  it 'prints a statement' do
-    account.credit(500)
-    expect(account.statement).to eq("2021")
-  end
-
 end
