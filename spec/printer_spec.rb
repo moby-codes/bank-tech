@@ -4,30 +4,24 @@ require 'date'
 describe 'Printer' do
 
   let(:account) { Account.new }
-  let(:date) {Date.today.to_s}
+  let(:date) { Date.today.to_s }
+  let(:headers) { "Date || Amount || Credit/Debit || Balance" }
+  let(:transaction_details) { "#{date} || 100 || deposit || 100" }
  
   # test to see if printer header is printing
 
   it 'prints the heading for the statement' do
     printer = Printer.new
-    expect(printer.print_header).to eq(print "Date ||" + " Amount || " + " Credit/Debit || " + " Balance \n")
+    expect(printer.print_header).to output(print "Date ||" + " Amount || " + " Credit/Debit || " + " Balance \n")
 
   end
 
-  # test to check if there is a transaction that is saving in the printer class
+  # test to check if it is printing the statement correctly
 
-  it 'grabs the transaction details from the account' do
+  it 'prints the statement in the correct format' do
     account.credit(100)
     nada = double(nil)
-    expect(@prints).not_to equal(nada)
+    expect(account.summary).to output("#{headers}\n#{transaction_details}\n").to_stdout
   end
-
-  # test to check if date is saving
-
-  # it 'prints the date of the transaction' do
-  #   p account
-  #   account.credit(100)
-  #   expect(account.summary).to eq "#{date} || 100 || deposit || 100" 
-  # end
 
 end
