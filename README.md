@@ -35,9 +35,7 @@ $ account.summary << to print out the account summary/statement in the format sp
 The above code should give you the following output:
 
  Date || Amount ||  Credit/Debit ||  Balance 
- 
  2021-09-30 || 100 || deposit || 100
- 
  2021-09-30 || 50 || withdrawal || 50
 
 
